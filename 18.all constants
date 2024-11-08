@@ -1,0 +1,22 @@
+%{
+#include <stdio.h>
+%}
+
+/* Regular expressions for different types of constants */
+%%
+[0-9]+\.[0-9]+          { printf("Floating-point constant: %s\n", yytext); }
+0[xX][0-9a-fA-F]+       { printf("Hexadecimal constant: %s\n", yytext); }
+0[0-7]+                 { printf("Octal constant: %s\n", yytext); }
+[0-9]+                  { printf("Integer constant: %s\n", yytext); }
+.                       { /* Ignore other characters */ }
+\n                      { /* Handle new lines if needed */ }
+%%
+
+int main() {
+    yylex(); // Call the lexical analyzer
+    return 0;
+}
+
+int yywrap() {
+    return 1; // Indicates the end of input for Lex
+}
