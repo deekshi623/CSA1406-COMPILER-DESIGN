@@ -1,0 +1,13 @@
+%{ 
+%} 
+%% 
+[aeiouAEIOU].[a-zA-Z0-9.]+ {printf("Accepted");}
+[a-zA-Z0-9]+ {printf("Not Accepted");}
+%% 
+int yywrap()
+{}
+int main() 
+{ 
+printf("enter string=\n");
+yylex(); 
+}
